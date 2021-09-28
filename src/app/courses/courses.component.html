@@ -1,0 +1,52 @@
+<div class='main-container'>
+  <div *ngIf="form" class="form">
+    <div>
+  <h2 id="firstHeader">Lets play some Golf!</h2>
+  <label>Select Course: </label>
+  <select required [(ngModel)]="courseID" class="form-control col-6" [ngModelOptions]="{standalone: true}">
+    <option value="18300">Fox Hollow</option>
+    <option value="11819">Thanksgiving Point</option>
+    <option value="19002">Spanish Oaks</option>
+  </select>
+</div>
+<br>
+<div>
+  <label>Select difficulty: </label>
+  <select required [(ngModel)]="difficulty" class="form-control col-4" [ngModelOptions]="{standalone: true}">
+    <option value="champion">Champion</option>
+    <option value="pro">Pro (Champion if Spanish Oaks)</option>
+    <option value="men">Men</option>
+    <option value="women">Women</option>
+  </select>
+</div>
+<br>
+<div>
+  <label>Select Players: </label>
+  <select required [(ngModel)]="numberOfPlayersSelection" class="form-control col-2" [ngModelOptions]="{standalone: true}">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  <button class="continue" (click)="formSubmit()">Continue</button>
+</div>
+</div>
+
+
+
+<div class="names" *ngIf="names">
+  <label>Names: </label>
+  <h6 *ngIf="badNames" class="err">No empty fields and no duplicate names</h6>
+  <div *ngFor="let number of playerCountArray; let i = index" [attr.data-index]="i">
+    <input type="text" required [(ngModel)]="playersArray[i].name" (keyup.enter)="checkNames()" />
+  </div>
+  
+  <button class="ready" type="submit" (click)="checkNames()">Ready?</button>
+</div>
+
+<a routerLink="play" routerLinkActive="active">
+<button *ngIf="letsPlayButton" class="letsplay()" (click)="beginGame()">Let's Play!</button>
+</a>  
+</div>
+
+<router-outlet></router-outlet>

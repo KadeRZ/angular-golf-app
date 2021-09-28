@@ -1,0 +1,71 @@
+.row {
+    margin: 5px 0px 5px 0px;
+    border: solid 1px rgb(193, 230, 31);
+}
+label {
+    color: white;
+}
+#cardStuff1, #cardStuff2 {
+    background-color: wheat;
+}
+.text-center {
+    border: solid 1px black;
+    font-size: 1.5vw;
+    margin: auto
+}
+.link {
+    font-size: 1.5vw;
+    margin: auto
+}
+.spinner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+  }
+#firstHeader {
+    color: wheat;
+}
+
+#mobile {
+    color: rgb(150, 150, 150);
+    text-align: center;
+    font-size: 10px;
+    text-decoration: underline;
+}
+
+.leftColumn {
+    font-size: 1.3vw;
+    margin: 5px;
+}
+
+.col-1 {
+    background-color: white;
+}
+body {
+    background-color: rgb(0, 70, 17);
+}
+
+/* inputs {
+    overflow: visible;
+} */
+
+/* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
+} */
+
+#courseName {
+    text-align: center;
+    color: white;
+}
+.totals {
+    color: rgb(148, 201, 148);
+}

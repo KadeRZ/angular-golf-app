@@ -1,0 +1,417 @@
+<h3 *ngIf="!saveComplete" id="courseName"></h3>
+
+
+<div *ngIf="spinner" class="spinner">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!spinner">
+
+<div *ngIf="!saveComplete && dataIn" id="cardStuff1">
+  <div class="row">
+    <div class="col-1 leftColumn">HOLE</div>
+    <div class="col-1 text-center">1</div>
+    <div class="col-1 text-center">2</div>
+    <div class="col-1 text-center">3</div>
+    <div class="col-1 text-center">4</div>
+    <div class="col-1 text-center">5</div>
+    <div class="col-1 text-center">6</div>
+    <div class="col-1 text-center">7</div>
+    <div class="col-1 text-center">8</div>
+    <div class="col-1 text-center">9</div>
+    <div class="col-1 text-center">OUT</div>
+  </div>
+
+  <div class="row">
+    <div class="col-1 leftColumn">YARDS</div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[0].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[1].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[2].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[3].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[4].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[5].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[6].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[7].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[8].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-1 leftColumn">HDCP</div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[0].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[1].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[2].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[3].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[4].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[5].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[6].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[7].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[8].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-1 leftColumn">PAR</div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[1].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[2].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[3].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[4].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[5].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[6].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[7].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[8].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[9].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center"></div>
+  </div>
+
+  <div *ngFor="let player of gameData.players; let i = index">
+    <div class="row inputs">
+      <div class="col-1 leftColumn">{{ player.name }}</div>
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[1].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[2].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[0].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[3].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[4].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[8].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[5].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[6].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[7].score"
+        class="col-1 text-center inputs"
+      />
+      <div class="col-1 text-center">{{ player.out }}</div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div *ngIf="!saveComplete && dataIn" id="cardStuff2">
+  <div class="row">
+    <div class="col-1 leftColumn">HOLE</div>
+    <div class="col-1 text-center">10</div>
+    <div class="col-1 text-center">11</div>
+    <div class="col-1 text-center">12</div>
+    <div class="col-1 text-center">13</div>
+    <div class="col-1 text-center">14</div>
+    <div class="col-1 text-center">15</div>
+    <div class="col-1 text-center">16</div>
+    <div class="col-1 text-center">17</div>
+    <div class="col-1 text-center">18</div>
+    <div class="col-1 text-center">IN</div>
+  </div>
+
+  <div class="row">
+    <div class="col-1 leftColumn">YARDS</div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[9].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[10].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[11].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[12].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[13].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[14].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[15].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[16].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[17].teeBoxes[difficultyNum].yards }}
+    </div>
+    <div class="col-1 text-center"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-1 leftColumn">HDCP</div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[9].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[10].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[11].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[12].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[13].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[14].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[15].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[16].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[17].teeBoxes[difficultyNum].hcp }}
+    </div>
+    <div class="col-1 text-center"></div>
+  </div>
+
+  <div class="row" id="parRow">
+    <div class="col-1 leftColumn">PAR</div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[9].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[10].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[11].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[12].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[13].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[14].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[15].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[16].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center">
+      {{ courseData.data.holes[17].teeBoxes[difficultyNum].par }}
+    </div>
+    <div class="col-1 text-center"></div>
+  </div>
+
+  <div *ngFor="let player of gameData.players; let i = index">
+    <div class="row inputs">
+      <div class="col-1 leftColumn">{{ player.name }}</div>
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[9].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[10].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[11].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[12].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[13].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[14].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[15].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[16].score"
+        class="col-1 text-center inputs"
+      />
+      <input
+        type="number"
+        (ngModelChange)="calculate(player)"
+        (change)="calculate(player)"
+        min="1"
+        [(ngModel)]="player.holes[17].score"
+        class="col-1 text-center inputs"
+      />
+      <div class="col-1 text-center">{{ player.in }}</div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!saveComplete" class="row">
+  <div class="totals col-3">Par Total: {{ parTotal }}</div>
+  <div class="totals col-3">Yards Total: {{ yardsTotal }}</div>
+  <div class="totals col-3">HDCP Total: {{ handicapTotal }}</div>
+</div>
+
+<div *ngIf="gameOver">
+  <div class="row totals">
+    <div *ngFor="let player of gameData.players; let i = index">
+      <span class="col-3">{{ player.name }}</span>
+      <span class="col-3">Final Score: {{ player.total }}</span>
+      <span class="col-6">{{ player.message }}</span>
+    </div>
+  </div>
+  <!-- <button (click)="finishGame()">Save Game Results to Firebase :)</button> -->
+</div>
+
+<!-- <div *ngIf="saveComplete"> -->
+<!-- <img src="https://media0.giphy.com/media/13qctMBrrgbwJi/giphy.gif" > -->
+<!-- <a href="https://console.firebase.google.com/u/0/project/golfscore-app-ad248/firestore/data~2Fgames~2FdgyISLqB8a4TqH1lIvB6">
+<h3 class="link">Click here to go to my firebase!</h3> -->
+<!-- </a> -->
+<!-- </div> -->
+
+</div>
